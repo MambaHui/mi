@@ -97,27 +97,13 @@ $(function(){
                                         }
                                         
                                         // /*单击某个商品 */
-                                        // $('.cart-goods-list .icon-checkbox').click(function(){
-                                        //     var flag=true;
-                                        //     if($(this).index()){
-                                        //         clickAll();
-                                        //     }else{
-                                               
-                                        //         var danNum=parseInt($(this).parents().eq(1).children().eq(5).html().split('元')[0]);
-                                        //         if(flag){
-                                        //             $('.cart-goods-list .icon-checkbox').eq(0).removeAttr("id");
-                                        //             $(this).removeAttr("id");
-                                        //             $('.total-price em').html(sum(totalArr)-danNum);
-                                        //             flag=false;
-                                        //         }else{
-                                        //             $('.cart-goods-list .icon-checkbox').eq(0).attr('id','colorChk');
-                                        //             $(this).attr('id','colorChk');
-                                        //             $('.total-price em').html(sum(totalArr)+danNum);
-                                        //             flag=true;
-                                        //         }
-                                        //     }
-
-                                        // })
+                                        $('.list-body .item-table').on('click','.item-row .icon-checkbox',function(){
+                                            if($(this).attr('id')=='colorChk'){
+                                                $(this).removeAttr("id");
+                                            }else{
+                                                $(this).attr("id");
+                                            }
+                                        })
                                         
                                     }
 
