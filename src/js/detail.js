@@ -80,7 +80,7 @@ $(function(){
           $('.bigFixed').show();
           $('.btn-primary').click(function(){
               $.ajax({
-                url:'http://localhost/xiaomi/src/php/interface/addwq.php',
+                url:'../php/interface/addwq.php',
                 data:{
                     id:numBer,
                     name:'玩具',

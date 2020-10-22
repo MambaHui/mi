@@ -3,7 +3,7 @@ $(function(){
                 showTbody();
                 function showTbody(){
                     $.ajax({
-                        url:'http://localhost/xiaomi/src/php/interface/showlist.php',
+                        url:'../php/interface/showlist.php',
                         success:function(res){
                             if(res.code){
                                 var arr = res.data;
@@ -100,8 +100,9 @@ $(function(){
                                         $('.list-body .item-table').on('click','.item-row .icon-checkbox',function(){
                                             if($(this).attr('id')=='colorChk'){
                                                 $(this).removeAttr("id");
+                                                $('.list-head .icon-checkbox').removeAttr("id");
                                             }else{
-                                                $(this).attr("id");
+                                                $(this).attr('id','colorChk');
                                             }
                                         })
                                         
@@ -129,7 +130,7 @@ $(function(){
                     if($(target).hasClass('jian')||$(target).hasClass('add')){
                         var classNa=target.className.trim().split(' ')[0];
                         $.ajax({
-                            url:'http://localhost/xiaomi/src/php/interface/updatewq.php',
+                            url:'../php/interface/updatewq.php',
                             data:{
                                 type:classNa,
                                 id:$(target).parents('.item-box').attr('id')
@@ -145,7 +146,7 @@ $(function(){
                         $('.bigFixed').show();
                         $('.btn-primary').click(function(){
                             $.ajax({
-                                url:'http://localhost/xiaomi/src/php/interface/delwq.php',
+                                url:'../php/interface/delwq.php',
                                 data:{
                                     id:$(target).parents('.item-box').attr('id')
                                 },
