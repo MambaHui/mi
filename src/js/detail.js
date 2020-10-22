@@ -121,7 +121,7 @@ $(function(){
       }
 
       function getCookie(key){
-          str = "";
+          var str = "";
           var tmp = document.cookie.split('; ');
           for(var i=0;i<tmp.length;i++){
               var t = tmp[i].split('=');
