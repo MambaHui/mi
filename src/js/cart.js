@@ -53,7 +53,7 @@ $(function(){
                                             }
                                             return s;
                                         }
-                                        $('.total-price em').html(sum(totalArr));
+                                        $('.total-price em').html(sum(totalArr));//总和
                                         $('.no-select-tip').hide();
                                         $('.total-price a').css({
                                             'backgroundColor':'#f25807',
@@ -97,14 +97,45 @@ $(function(){
                                         }
                                         
                                         // /*单击某个商品 */
-                                        $('.list-body .item-table').on('click','.item-row .icon-checkbox',function(){
+                                        var allChecks=$('.list-body').find('.item-box');
+                                        // console.log(allChecks);
+                                        $('.item-box .item-row .icon-checkbox').click(function(){
+                                            var thisNum=parseInt($(this).parents().eq(3).children().children().children().eq(5).html().split('元')[0]);
                                             if($(this).attr('id')=='colorChk'){
                                                 $(this).removeAttr("id");
                                                 $('.list-head .icon-checkbox').removeAttr("id");
+                                                allChecks.length--;
+                                                $.each(totalArr,function(i,v){
+                                                    if(v==thisNum){
+                                                        totalArr.splice(i,1);
+                                                    }
+                                                })
+                                                $('.total-price em').html(sum(totalArr));
+
                                             }else{
                                                 $(this).attr('id','colorChk');
+                                                allChecks.length++;
+                                                totalArr.push(thisNum);
+                                                $('.total-price em').html(sum(totalArr));
                                             }
+                                            // ischeck();
+                                            // console.log(allChecks.length);
+                                            $('.section-left-span i').eq(1).html(allChecks.length);
+                                            //判断商品列是否全选
+                                            if($('.item-box').length==allChecks.length){
+                                                $('.list-head .icon-checkbox').attr('id','colorChk');
+                                                // $('.total-price em').html(sum(totalArr));
+                                            }
+                                            if($(this).attr('id')!='colorChk'){
+                                                $('.list-head .icon-checkbox').removeAttr("id");
+                                            }
+                                            // console.log($('.item-box .item-row .icon-checkbox'));
+                                            // console.log(samlNum);
+
+
                                         })
+                                        
+
                                         
                                     }
 
