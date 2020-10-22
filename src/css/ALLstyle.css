@@ -1,0 +1,37 @@
+body,p,ul,ol,dl,dd,hr,h1,h2,h3,h4,h5,h6,figure,ul,ol,th,td,button,input,fieldset,legend,textarea,option{
+	margin: 0;padding: 0;
+}
+a{
+	color:black;
+	text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+}
+i,em,b,strong{
+	font-weight: normal;
+	font-style: normal;
+}
+html{
+	font-size: 31.25vw;
+}
+body{
+	font-size: 14px;
+	font-family: Helvetica,arial,"MI Lan Pro","Hiragino Sans GB","PingFang SC","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;
+/* 	color: #333333; */
+}
+ul,ol{
+	list-style: none;
+}
+img{
+	display: inline-block;
+}
+form input{
+	border: 0;
+	outline: none;
+}
+.clear::after{
+	content: "";
+	clear: both;
+	display: block;
+}

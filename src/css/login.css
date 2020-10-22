@@ -1,0 +1,275 @@
+.type_area{
+    width: 1130px;
+    margin: 0 auto;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-size: 14px;
+    font-family: Helvetica,arial,"MI Lan Pro","Hiragino Sans GB","PingFang SC","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;
+}
+/* logo */
+#logo{
+    height: 98px;
+}
+#logo a{
+    display: block;
+    width: 200px;
+    height: 98px;
+    background: url(../images/mi-login/mistore_logo.png) no-repeat;
+}
+/* banner */
+#banner{
+    width: 100%;
+    height: 588px;
+    position: absolute;
+    left: 0;
+    top: 98px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background: url(../images/mi-login/aece569d6689b4c461bb53efd9eea9c7.jpg) no-repeat center;
+}
+#banner .bannerA{
+    display: block;
+    height: 588px;
+    text-indent: -9999em;
+}
+/* login */
+#form{
+    margin-top: 32px;
+    width: 410px;
+    margin-left: 720px;
+    height: 556px;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 4;
+}
+.tabs a{
+    color: #666;
+    margin-bottom: 30px;
+}
+.tabs a:hover{
+    color: #f56600;;
+}
+.forget a:hover{
+    color: #f56600;
+}
+.tabs .now{
+    color: #f56600;
+}
+#form ul li{
+    display: none;
+}
+#form ul li.active{
+    display: block;
+}
+#form .tabs{
+    padding: 27px 0 24px;
+    text-align: center;
+    font-size: 24px;
+    color: #666;
+}
+#form .line{
+    width: 1px;
+    height: 24px;
+    margin: 0 42px 0 35px;
+    border: 1px solid #e0e0e0;
+    background: #e0e0e0;
+}
+.tabs-con{
+    height: 473px;
+}
+.ercode_area{
+    width: 410px;
+    height: 474px;
+    overflow: hidden;
+    text-align: center;
+    color: #757575;
+    position: absolute;
+    top: 83px;
+}
+.ercode_area .code_iframe{
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    margin-top: 120px;
+    margin-bottom: 40px;
+}
+.custom-qr-name span{
+    padding: 0 5px;
+    color: #ff6700;
+}
+#form-main{
+    margin: 0 31px;
+    width: 348px;
+    height: 473px;
+    position: relative;
+}
+#form-main input{
+    width: 306px;
+}
+.labelbox {
+    display: block;
+    margin-bottom: 14px;
+    border: 1px solid #e0e0e0;
+}
+.labelbox input {
+    height: 22px;
+    line-height: 22px;
+    padding: 13px 16px 13px 14px;
+    display: block;
+    font-size: 14px;
+    color: #999;
+}
+.error{
+    position: absolute;
+    top: 140px;
+    margin-bottom: 5px;
+    line-height: 20px;
+    color: #f56600;
+    font-size: 14px;
+    display: none;
+}
+.error .error-con{
+    color: #f56600;
+    line-height: 20px;
+}
+.err_tip{
+    margin-bottom: 5px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #f66;
+    margin-top: -8px;
+    visibility: hidden;
+}
+.icon_error{
+    width: 14px;
+    height: 14px;
+    margin: -1px 5px 0 0;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/mi-login/sprite_login.gif) no-repeat 0 -69px;
+}
+.but{
+    padding-top: 10px;
+}
+#form-main .but input{
+    background-color: #ff6700;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    display: block;
+    margin-bottom: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
+.other_panel {
+    margin-top: -5px;
+}
+.other_panel .top{
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+.other_panel .top .cellphone{
+    display: inline-block;
+    color: #ff6700;
+}
+.forget{
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+}
+.forget a{
+    color: #999;
+}
+.forget span{
+    padding-left: 2px;
+}
+.login_method{
+    padding-top: 103px;
+}
+.method-main{
+    padding-top: 3px;
+    text-align: center;
+}
+.method-main a{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 15px;
+    display: inline-block;
+}
+/* QQ登录 */
+.method-main a:nth-child(1){
+    background-color: #0288d1;
+}
+.icons-type{
+    display: block;
+    margin: 4px auto 0;
+    width: 18px;
+    height: 18px;
+}
+.icons-qq{
+    background: url(../images/mi-login/icons_type.png);
+    background-position: -19px 0;
+}
+.icons-weibo{
+    background: url(../images/mi-login/icons_type.png);
+    background-position: -38px 0;
+}
+.icons-alipay{
+    background: url(../images/mi-login/icons_type.png);
+    background-position: -57px 0;
+    width: 25px;
+    margin-top: 6px;
+    margin-left: 4px;
+}
+.icons-weixin{
+    background: url(../images/mi-login/icons_type.png);
+    background-position: -83px 0;
+    width: 24px;
+    margin: 6px 3px 0;
+}
+/* 微博登录 */
+.method-main a:nth-child(2){
+    background-color: #d32f2f;
+}
+/* 支付宝登录 */
+.method-main a:nth-child(3){
+    background-color: #0ae;
+}
+/* 微信登录 */
+.method-main a:nth-child(4){
+    background-color:#00d20d;
+}
+/* copy */
+#copy{
+    height: 80px;
+    padding-top: 100px;
+    position: relative;
+}
+.language{
+    text-align: center;
+}
+.language li{
+    display: inline-block;
+    color: #757575;
+}
+.language li a{
+    padding: 0 10px;
+    color: #757575;
+}
+.language li a:hover{
+    color: #333;
+}
+#copy p{
+    text-align: center;
+    color: #757575;
+    padding: 10px;
+}

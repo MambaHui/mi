@@ -1,0 +1,27 @@
+[
+    {
+        "img":"../images/mi-index/intellect.png",
+        "title":"小米米家智能摄像机云台版",
+        "price":"189元"
+    },
+    {
+        "img":"../images/mi-index/intellect2.png",
+        "title":"小米小爱老师",
+        "price":"499元起"
+    },
+    {
+        "img":"../images/mi-index/intellect3.png",
+        "title":"小米全自动智能门锁",
+        "price":"1799元"
+    },
+    {
+        "img":"../images/mi-index/intellect4.png",
+        "title":"Redmi小爱触屏音箱8",
+        "price":"349元"
+    },
+    {
+        "img":"../images/mi-index/intellect5.jpg",
+        "title":"小米小爱触屏音箱",
+        "price":"199元"
+    }
+]

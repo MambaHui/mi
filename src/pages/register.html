@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米帐号 -注册</title>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/ALLstyle.css" />
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../js/register.js"></script>
+</head>
+<body>
+    <div id="register">
+        <!-- 中间部分 -->
+        <div class="main">
+            <!-- 登录区域 -->
+            <div class="external_logo_area">
+                <a href="./index.html" class="milogo"></a>
+            </div>
+            <h4 class="title_big30">注册小米帐号</h4>
+            <!-- 登录按钮区域 -->
+            <div>
+                <div class="regbox">
+                    <form action="" method="get">
+                        <h4 class="tit_normal">帐号</h4>
+                        <div id="name">
+                            <input type="text" class="tits" placeholder="邮箱/手机号码/小米ID" id="username" name="username">
+                            <div class="err_tip">
+                                <em class="icon_error"></em>
+                                <span>请输入小米帐号</span>
+                            </div>
+                            <div class="err_win">
+                                <span>成功注册帐号后，帐号将不能被修改</span>
+                            </div>
+                        </div>
+                        <h4 class="tit_normal">密码</h4>
+                        <div id="pass">
+                            <input type="password" class="tits" placeholder="密码" id="password"
+                            name="password">
+                            <div class="err_tip">
+                                <em class="icon_error"></em>
+                                <span>请输入帐号密码</span>
+                            </div>
+                            <div class="err_win2">
+                                <span>注册帐号成功，正在跳转登录界面......</span>
+                            </div>
+                        </div>
+                        <input type="button" value="立即注册" class="sub">
+                    </form>
+                </div>
+            </div>
+            <div class="privacy_box">
+                已阅读并同意：小米&nbsp;<a href="javascript:void(0);" title="用户协议">用户协议&nbsp;</a>和<a href="javascript:void(0);" title=" 隐私政策">&nbsp;隐私政策&nbsp;</a>
+            </div>
+            <!-- copy -->
+            <div id="copy" class="type_area enter">
+                <div class="language clear">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0);">简体</a>|
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">繁体</a>|
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">English</a>|
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">常见问题</a>
+                        </li>
+                    </ul>
+                </div>
+                <p class="enter-copy">小米公司版权所有-京ICP备10046444-<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134" target="_blank"><span><img src="../images/mi-login/ghs.png" alt=""></span>京公网安备11010802020134号</a>-京ICP证110507号</p> 
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
