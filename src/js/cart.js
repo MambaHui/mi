@@ -1,21 +1,23 @@
-$(function(){
-    (function(){
-                showTbody();
-                function showTbody(){
-                    $.ajax({
-                        url:'../php/interface/showlist.php',
-                        success:function(res){
-                            if(res.code){
-                                var arr = res.data;
-                                $('.cart').show();
-                                $('.vacancy').hide();
-                                $('.header-title p').show();
+$(function () {
 
-                                //在list-body清空
-                                $('.list-body').empty();
-                                var totalArr=[];
-                                $.each(arr,function(index,item){
-                                    $('.list-body').append(`<div class="item-box" id="${item.product_id}">
+    (function () {
+        
+        
+        //渲染商品
+        function showTbody() {
+            $.ajax({
+                url: '../php/interface/showlist.php',
+                success: function (res) {
+                    if (res.code) {
+                        var arr = res.data;
+                        $('.cart').show();
+                        $('.vacancy').hide();
+                        $('.header-title p').show();
+                        //在list-body清空
+                        $('.list-body').empty();
+                        var totalArr = [];
+                        $.each(arr, function (index, item) {
+                            $('.list-body').append(`<div class="item-box" id="${item.product_id}">
                                     <div class="item-table">
                                         <div class="item-row clear">
                                             <div class="col col-check check-color">
@@ -43,157 +45,145 @@ $(function(){
                                         </div>
                                     </div>
                                 </div>`)
-                                    var total=item.product_price*item.product_num;
-                                    totalArr.push(total);
-                                    if(index==arr.length-1){
-                                        function sum(arr){
-                                            var s=0;
-                                            for(var i=arr.length-1;i>=0;i--){
-                                                s+=arr[i];
-                                            }
-                                            return s;
-                                        }
-                                        $('.total-price em').html(sum(totalArr));//总和
-                                        $('.no-select-tip').hide();
-                                        $('.total-price a').css({
-                                            'backgroundColor':'#f25807',
-                                            'borderColor': '#f25807',
-                                            'color':'#fff'
-                                        });
-                                        //全部添加颜色
-                                        $('.cart-goods-list .icon-checkbox').attr('id','colorChk');
-                                        //点击全选 其他删掉
-                                        clickAll()
-                                        function clickAll(){
-                                            var flag=true;
-                                            $('.cart-goods-list .icon-checkbox').eq(0).click(function(){
-                                                if(flag){
-                                                    $('.cart-goods-list .icon-checkbox').removeAttr("id");
-                                                    $('.total-price em').html(sum(totalArr)*0);
-                                                    $('.no-select-tip').show();
-                                                    $('.total-price a').css({
-                                                        'backgroundColor':'#e0e0e0',
-                                                        'borderColor': '#e0e0e0',
-                                                        'color':'#b0b0b0',
-                                                        'cursor':'default'
-                                                    });
-                                                    $('.section-left-span i').eq(1).html(arr.length*0);
-                                                    flag=false;
-                                                }else{
-                                                    $('.cart-goods-list .icon-checkbox').attr('id','colorChk');
-                                                    $('.total-price em').html(sum(totalArr));
-                                                    $('.no-select-tip').hide();
-                                                    $('.total-price a').css({
-                                                        'backgroundColor':'#f25807',
-                                                        'borderColor': '#f25807',
-                                                        'color':'#fff',
-                                                        'cursor':'pointer'
-                                                    });
-                                                    $('.section-left-span i').html(arr.length);
-                                                    flag=true;
-                                                }
-                                                
-                                            });
-                                        }
-                                        
-                                        // /*单击某个商品 */
-                                        var allChecks=$('.list-body').find('.item-box');
-                                        // console.log(allChecks);
-                                        $('.item-box .item-row .icon-checkbox').click(function(){
-                                            var thisNum=parseInt($(this).parents().eq(3).children().children().children().eq(5).html().split('元')[0]);
-                                            if($(this).attr('id')=='colorChk'){
-                                                $(this).removeAttr("id");
-                                                $('.list-head .icon-checkbox').removeAttr("id");
-                                                allChecks.length--;
-                                                $.each(totalArr,function(i,v){
-                                                    if(v==thisNum){
-                                                        totalArr.splice(i,1);
-                                                    }
-                                                })
-                                                $('.total-price em').html(sum(totalArr));
+                        });
 
-                                            }else{
-                                                $(this).attr('id','colorChk');
-                                                allChecks.length++;
-                                                totalArr.push(thisNum);
-                                                $('.total-price em').html(sum(totalArr));
-                                            }
-                                            // ischeck();
-                                            // console.log(allChecks.length);
-                                            $('.section-left-span i').eq(1).html(allChecks.length);
-                                            //判断商品列是否全选
-                                            if($('.item-box').length==allChecks.length){
-                                                $('.list-head .icon-checkbox').attr('id','colorChk');
-                                                // $('.total-price em').html(sum(totalArr));
-                                            }
-                                            if($(this).attr('id')!='colorChk'){
-                                                $('.list-head .icon-checkbox').removeAttr("id");
-                                            }
-                                            // console.log($('.item-box .item-row .icon-checkbox'));
-                                            // console.log(samlNum);
+                        $('.cart .icon-checkbox').attr('id', 'colorChk');
 
+                        isCheckAll();
+                    } else {
+                        $('.cart').hide();
+                        $('.vacancy').show();
+                        $('.header-title p').hide();
+                    };
 
-                                        })
-                                        
+                },
+                dataType: 'json',
+                cache: false
+            });
+        }
 
-                                        
-                                    }
+        //删除商品
+        $('.list-body').click(function (e) {
+            var target = e.target;
+            e.stopPropagation();
+            //target是一个节点
+            if ($(target).hasClass('jian') || $(target).hasClass('add')) {
+                var classNa = target.className.trim().split(' ')[0];
+                $.ajax({
+                    url: '../php/interface/updatewq.php',
+                    data: {
+                        type: classNa,
+                        id: $(target).parents('.item-box').attr('id')
+                    },
+                    success: function (res) {
+                        if (res.code) {
+                            showTbody();
+                        }
+                    },
+                    dataType: 'json'
+                });
 
-
-                                });
-
-                                $('.section-left-span i').html(arr.length);
-
-                            }else{
-                                $('.cart').hide();
-                                $('.vacancy').show();
-                                $('.header-title p').hide();
+            } else if ($(target).hasClass('del')) {
+                $('.bigFixed').show();
+                $('.btn-primary').click(function () {
+                    $.ajax({
+                        url: '../php/interface/delwq.php',
+                        data: {
+                            id: $(target).parents('.item-box').attr('id')
+                        },
+                        success: function (res) {
+                            if (res.code) {
+                                showTbody();
+                                $('.bigFixed').hide();
                             }
                         },
-                        dataType:'json',
-                        cache:false
-                    })
+                        dataType: 'json'
+                    });
+                });
+                $('.btn-gray').click(function () {
+                    $('.bigFixed').hide();
+                });
+            }
+
+        });
+
+        //全选按钮 复选按钮 
+        function checkFunc(){
+            $('.cart .list-head .check-color').find('i').click(function(){
+                var sonCheckBox = $('.list-body').find('.item-table .item-row .col-check').find('i');
+                if($(this).attr('id')=='colorChk'){
+                    $(this).add(sonCheckBox).removeAttr('id');
+                }else{
+                    $(this).add(sonCheckBox).attr('id', 'colorChk');
                 }
-                $('.list-body').click(function(e){
-                    var target=e.target;
-                    e.stopPropagation();
-                    //target是一个节点
-                    if($(target).hasClass('jian')||$(target).hasClass('add')){
-                        var classNa=target.className.trim().split(' ')[0];
-                        $.ajax({
-                            url:'../php/interface/updatewq.php',
-                            data:{
-                                type:classNa,
-                                id:$(target).parents('.item-box').attr('id')
-                            },
-                            success:function(res){
-                                if(res.code){
-                                    showTbody();
-                                }
-                            },
-                            dataType:'json'
-                        });
-                    }else if($(target).hasClass('del')){
-                        $('.bigFixed').show();
-                        $('.btn-primary').click(function(){
-                            $.ajax({
-                                url:'../php/interface/delwq.php',
-                                data:{
-                                    id:$(target).parents('.item-box').attr('id')
-                                },
-                                success:function(res){
-                                    if(res.code){
-                                        showTbody();
-                                        $('.bigFixed').hide();
-                                    }
-                                },
-                                dataType:'json'
-                            });
-                        });
-                        $('.btn-gray').click(function(){
-                            $('.bigFixed').hide();
-                        });
-                    }
+                isCheckAll();
+            });
+
+            //单复选框 事件委托点击
+            $('.list-body').on('click','.item-row .col-check i',function(){
+                if($(this).attr('id')=='colorChk'){
+                    $(this).removeAttr('id');
+                }else{
+                    $(this).attr('id', 'colorChk');
+                }
+                isCheckAll();
+            })
+
+
+        }
+
+        //判断有多少个被选中
+        function isCheckAll(){
+            var allChecks=$('.list-body').find('.item-box'),
+                isAll=true,
+                total=0,
+                count=0,
+                totalCount=0;
+            allChecks.each(function(index,item){
+                if($(item).find('.col-check i').attr('id')!='colorChk'){
+                    isAll=false;
+                }else{
+                    //计算总数
+                    total+=parseInt($(item).find('.col-price').html().split('元')[0])*parseInt($(item).find('.col-num span').html());
+                    count+=parseInt($(item).find('.col-num span').html());
+                }
+                //计算所有购物车共有几件
+                totalCount+=parseInt($(item).find('.col-num span').html());
+            });
+            $('.section-left span i').eq(0).html(totalCount);
+            $('.section-left span i').eq(1).html(count);
+            $('.total-price em').html(total);
+            //判断total 是否为0
+            if(total!=0){
+                $('.btn-disabled').css({
+                    'backgroundColor':'#f25807',
+                    'borderColor':'#f25807',
+                    'color':'#fff',
+                    'cursor':'pointer'
                 })
-    })()
+                $('.no-select-tip').hide();
+            }else{
+                $('.btn-disabled').css({
+                    'backgroundColor':'#e0e0e0',
+                    'borderColor':'#e0e0e0',
+                    'color':'#b0b0b0',
+                    'cursor':'default'
+                })
+                $('.no-select-tip').show();
+            }
+            //判断是否全选
+            if(isAll){
+                $('.cart .list-head .check-color i').attr('id', 'colorChk');
+            }else{
+                $('.cart .list-head .check-color i').removeAttr('id');
+            }
+        }
+            
+        
+
+        showTbody();
+        checkFunc();
+    })();
+
+
 })

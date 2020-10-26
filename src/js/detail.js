@@ -68,15 +68,13 @@ $(function(){
           }, */
         })
     })();
-
-
-    //购物车
+    
     (function(){
+      //购物车
         //点击加入购物车，把商品加入数据库
         $(".btn-primary").click(function(){
           var numBer=parseInt(Math.random() * (20000));
-          var numTwo=parseInt(Math.random() * (1000));
-          var numThe=parseInt(Math.random() * (100));
+          var numTwo=parseInt(Math.random() * (1000)+1);
           $('.bigFixed').show();
           $('.btn-primary').click(function(){
               $.ajax({
@@ -86,12 +84,13 @@ $(function(){
                     name:'玩具',
                     price:numTwo,
                     img:'../images/mi-cart/swatter.jpg',
-                    num:numThe
+                    num:1
                 },
                 success:function(res){
                     if(res.code){
-                      location.href="./cart.html";
+                        location.href="./cart.html";
                     }
+                    isCheckAll();
                 },
                 dataType:'json'
             });
@@ -99,9 +98,29 @@ $(function(){
           $('.btn-gray').click(function(){
             $('.bigFixed').hide();
           })
-      })
+        });
+
+        function isCheckAll(){
+          var allChecks=$('.list-body').find('.item-box'),
+              isAll=true,
+              total=0,
+              count=0,
+              totalCount=0;
+          // allChecks.each(function(index,item){
+          //     // if($(item).find('.col-check i').attr('id')!='colorChk'){
+          //     //     isAll=false;
+          //     //     console.log($(item).find('.col-price').html().split('元')[0]);
+          //     // }else{
+          //     //     //计算总数
+          //     //     total=$(item).find('.col-price').html().split('元')[0]
+          //     // }
+          //     console.log(index,item);
+          // });
+          console.log(allChecks);
+        }
+
     })();
-    
+
     //获取cookie
     (function(){
 
@@ -141,6 +160,6 @@ $(function(){
           }
       }
 
-  })();
+    })();
 
 });
